@@ -1,0 +1,6 @@
+https://github.com/VervaekeLab/NANSEN
+https://github.com/openMetadataInitiative/openMINDS_MATLAB@x/feature/021-change-collection
+https://github.com/ehennestad/openMINDS-MATLAB-UI
+https://github.com/NansenModules/SHAREbrain
+https://github.com/NansenModules/NANSEN-NWB
+https://github.com/ehennestad/EBRAINS-MATLAB
