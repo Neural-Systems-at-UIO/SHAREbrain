@@ -7,6 +7,7 @@ function installMatBox()
     if ~isempty(isMatchedAddon) && any(isMatchedAddon)
         matlab.addons.enableAddon('MatBox')
     else
+        fprintf('Installing MatBox...')
         info = webread('https://api.github.com/repos/ehennestad/MatBox/releases/latest');
         assetNames = {info.assets.name};
         isMltbx = startsWith(assetNames, 'MatBox');
@@ -19,5 +20,6 @@ function installMatBox()
 
         % Install toolbox
         matlab.addons.install(tempFilePath);
+        fprintf('Done.\n')
     end
 end
