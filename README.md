@@ -15,7 +15,13 @@ SHAREbrain is a workflow aimed to help researchers prepare data and metadata in 
 6. [EBRAINS_MATLAB](https://github.com/ehennestad/EBRAINS-MATLAB)
 
 ## Getting Started
-Work in progress
+
+### Requirements
+- MATLAB R2022b or later
+- Python 3.9 or later
+
+### Installation
+Clone this repository and run `sharebrain_install`
 
 ## Acknowledgements
 Work in progress
