@@ -21,7 +21,10 @@ SHAREbrain is a workflow aimed to help researchers prepare data and metadata in 
 - Python 3.9 or later
 
 ### Installation
-Clone this repository and run `sharebrain_install`
+Clone this repository and run:
+```matlab
+sharebrain_install
+```
 
 ### Step-by-step guide
 Check out the [step-by-step](https://github.com/Neural-Systems-at-UIO/SHAREbrain/wiki/Steps-to-share-a-dataset-using-the-SHAREbrain-workflow) guide in this repository's Wiki
