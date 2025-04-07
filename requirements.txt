@@ -4,3 +4,4 @@ https://github.com/ehennestad/openMINDS-MATLAB-UI
 https://github.com/NansenModules/NANSEN-SHAREbrain
 https://github.com/NansenModules/NANSEN-NWB
 https://github.com/ehennestad/EBRAINS-MATLAB
+https://github.com/ehennestad/matnwb@create-matnwb-namespace
