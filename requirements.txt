@@ -1,5 +1,5 @@
 https://github.com/VervaekeLab/NANSEN@x/issue/030-create-tutorial
-https://github.com/openMetadataInitiative/openMINDS_MATLAB@x/feature/021-change-collection
+https://github.com/openMetadataInitiative/openMINDS_MATLAB
 https://github.com/ehennestad/openMINDS-MATLAB-UI@x/feature/008-update-table-viewer
 https://github.com/NansenModules/NANSEN-SHAREbrain
 https://github.com/NansenModules/NANSEN-NWB
