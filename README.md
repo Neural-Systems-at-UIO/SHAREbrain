@@ -7,7 +7,7 @@ SHAREbrain is a workflow aimed to help researchers prepare data and metadata in 
 <img width="1579" alt="SHAREbrain workflow" src="https://github.com/user-attachments/assets/f1d35783-3940-4357-b240-6a302257b47d">
 
 ## Workflow Modules
-1. [NANSEN](https://github.com/VervaekeLab/NANSEN) `branch: x/issue/030-create-tutorial`
+1. [NANSEN](https://github.com/VervaekeLab/NANSEN) `branch: dev`
 2. [NANSEN-SHAREbrain module](https://github.com/NansenModules/SHAREbrain)
 3. [NANSEN-NWB module](https://github.com/NansenModules/NANSEN-NWB)
 4. [openMINDS-MATLAB](https://github.com/openMetadataInitiative/openMINDS_MATLAB)
