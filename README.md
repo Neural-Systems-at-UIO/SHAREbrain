@@ -4,7 +4,7 @@
 SHAREbrain is a workflow aimed to help researchers prepare data and metadata in a standardised manner for sharing via the EBRAINS Data &amp; Knowledge service
 
 ### Step-by-step guide
-Check out the [step-by-step](https://github.com/Neural-Systems-at-UIO/SHAREbrain/wiki/the-SHAREbrain-workflow) guide in this repository's Wiki
+Check out the [step-by-step](https://github.com/Neural-Systems-at-UIO/SHAREbrain/wiki) guide in this repository's Wiki
 
 ## Workflow Diagram
 <img width="1579" alt="SHAREbrain workflow" src="https://github.com/user-attachments/assets/f1d35783-3940-4357-b240-6a302257b47d">
