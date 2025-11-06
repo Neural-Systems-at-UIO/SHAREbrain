@@ -1,6 +1,6 @@
 https://github.com/VervaekeLab/NANSEN@dev
 https://github.com/openMetadataInitiative/openMINDS_MATLAB
-https://github.com/ehennestad/openMINDS-MATLAB-UI@x/feature/008-update-table-viewer
+https://github.com/ehennestad/openMINDS-MATLAB-UI
 https://github.com/NansenModules/NANSEN-SHAREbrain
 https://github.com/NansenModules/NANSEN-NWB
 https://github.com/ehennestad/EBRAINS-MATLAB
