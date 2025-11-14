@@ -11,8 +11,9 @@ SHAREbrain is a workflow aimed to help researchers prepare data and metadata in 
 2. [NANSEN-SHAREbrain module](https://github.com/NansenModules/SHAREbrain)
 3. [NANSEN-NWB module](https://github.com/NansenModules/NANSEN-NWB)
 4. [openMINDS-MATLAB](https://github.com/openMetadataInitiative/openMINDS_MATLAB)
-5. [openMINDS-MATLAB-GUIDE](https://github.com/ehennestad/openMINDS-MATLAB-GUI)
-6. [EBRAINS_MATLAB](https://github.com/ehennestad/EBRAINS-MATLAB)
+5. [openMINDS-KG-Sync](https://github.com/ehennestad/openminds-kg-sync)
+6. [openMINDS-MATLAB-GUIDE](https://github.com/ehennestad/openMINDS-MATLAB-GUI)
+7. [EBRAINS_MATLAB](https://github.com/ehennestad/EBRAINS-MATLAB)
 
 ## Getting Started
 
