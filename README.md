@@ -32,4 +32,4 @@ sharebrain_install
 Check out the [step-by-step](https://github.com/Neural-Systems-at-UIO/SHAREbrain/wiki) guide in this repository's Wiki
 
 ## Acknowledgements
-Work in progress
+This project is funded by the University of Oslo via the Hub-Node SHAREbrain
