@@ -18,7 +18,7 @@ SHAREbrain is a workflow aimed to help researchers prepare data and metadata in 
 ## Getting Started
 
 ### Requirements
-- MATLAB R2022b or later
+- MATLAB R2022b to R2024b
   - Image Processing Toolbox (NANSEN)
   - Statistics Toolbox (NANSEN) 
 - Python 3.9 or later (Please refer to [this table](https://se.mathworks.com/support/requirements/python-compatibility.html) for an overview of versions compatible with your MATLAB release)
