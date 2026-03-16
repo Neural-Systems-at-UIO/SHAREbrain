@@ -14,7 +14,8 @@ Check out the [step-by-step](https://github.com/Neural-Systems-at-UIO/SHAREbrain
 NANSEN to NWB
 1. [NANSEN](https://github.com/VervaekeLab/NANSEN/tree/dev) `branch: dev`
 2. [NANSEN-SHAREbrain module](https://github.com/NansenModules/SHAREbrain)
-3. [NANSEN-NWB module](https://github.com/NansenModules/NANSEN-NWB)
+3. [NANSEN-NWB module](https://github.com/NansenModules/NANSEN-NWB) (requires [MATNWB](https://github.com/NeurodataWithoutBorders/matnwb))
+
 
 NANSEN to openMINDS / EBRAINS
 1. [openMINDS-MATLAB](https://github.com/openMetadataInitiative/openMINDS_MATLAB)
