@@ -28,7 +28,6 @@ NANSEN to openMINDS / EBRAINS
 ### Requirements
 - MATLAB R2022b to R2024b (R2025a and later compatibility under testing)
   - Image Processing Toolbox (NANSEN)
-  - Statistics and Machine Learning Toolbox (NANSEN) 
 
 ### Installation
 Clone this repository and run:
