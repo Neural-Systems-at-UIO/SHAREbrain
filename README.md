@@ -29,7 +29,6 @@ NANSEN to openMINDS / EBRAINS
 - MATLAB R2022b to R2024b (R2025a and later compatibility under testing)
   - Image Processing Toolbox (NANSEN)
   - Statistics and Machine Learning Toolbox (NANSEN) 
-- Python 3.9 or later (Please refer to [this table](https://se.mathworks.com/support/requirements/python-compatibility.html) for an overview of versions compatible with your MATLAB release)
 
 ### Installation
 Clone this repository and run:
