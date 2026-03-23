@@ -1,5 +1,5 @@
-function installMatBox()
-    % installMatBox - Install MatBox from latest release
+function sharebrain_installMatBox()
+    % sharebrain_installMatBox - Install MatBox from latest release
 
     addonsTable = matlab.addons.installedAddons();
     isMatchedAddon = addonsTable.Name == "MatBox";
