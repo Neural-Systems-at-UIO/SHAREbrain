@@ -1,4 +1,4 @@
-https://github.com/VervaekeLab/NANSEN@dev
+https://github.com/VervaekeLab/NANSEN@temp/check-2025-compatibility2
 https://github.com/openMetadataInitiative/openMINDS_MATLAB
 https://github.com/ehennestad/openMINDS-MATLAB-UI
 https://github.com/ehennestad/openminds-kg-sync
