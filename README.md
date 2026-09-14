@@ -26,7 +26,7 @@ NANSEN to openMINDS / EBRAINS
 ## Getting Started
 
 ### Requirements
-- MATLAB R2022b to R2024b (R2025a and later compatibility under testing)
+- MATLAB R2022b to latest
   - Image Processing Toolbox (NANSEN)
 
 ### Installation
