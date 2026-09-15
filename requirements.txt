@@ -1,8 +1,20 @@
 https://github.com/VervaekeLab/NANSEN@dev
-https://github.com/openMetadataInitiative/openMINDS_MATLAB
-https://github.com/ehennestad/openMINDS-MATLAB-UI
-https://github.com/ehennestad/openminds-kg-sync
+
+# This module allows data upload to EBRAINS Buckets and metadata 
+# upload to EBRAINS Knowledge Graph
 https://github.com/NansenModules/NANSEN-SHAREbrain
+
+# Requirements for the NANSEN-SHAREbrain module. Added here because 
+# MatBox does not install requirements of requirements.
+https://github.com/ehennestad/EBRAINS-MATLAB@v0.10.0
+https://github.com/ehennestad/openminds-kg-sync
+https://github.com/openMetadataInitiative/openMINDS_MATLAB@v0.12.0
+
+https://github.com/ehennestad/openMINDS-MATLAB-UI
+
+# This module provides methods for converting data variables of a NANSEN project to NWB
 https://github.com/NansenModules/NANSEN-NWB
-https://github.com/ehennestad/EBRAINS-MATLAB
-https://github.com/ehennestad/matnwb@create-matnwb-namespace
+
+# Requirements for the NANSEN-NWB module. Added here because 
+# MatBox does not install requirements of requirements.
+https://github.com/NeurodataWithoutBorders@v2.11.0
