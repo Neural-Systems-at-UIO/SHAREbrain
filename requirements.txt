@@ -6,7 +6,7 @@ https://github.com/NansenModules/NANSEN-SHAREbrain
 
 # Requirements for the NANSEN-SHAREbrain module. Added here because 
 # MatBox does not install requirements of requirements.
-https://github.com/ehennestad/EBRAINS-MATLAB@v0.10.0
+https://github.com/ehennestad/EBRAINS-MATLAB@v0.10.1
 https://github.com/ehennestad/openminds-kg-sync
 https://github.com/openMetadataInitiative/openMINDS_MATLAB@v0.12.0
 
