@@ -9,13 +9,14 @@ function report = importKGSubjects(datasetVersionUUID, options)
 %       whose SubjectID equals the internalIdentifier of a Knowledge Graph
 %       subject gets its BiologicalSex, Species, Strain, KGInstanceId and
 %       KGLookupLabel. A project without a subject table gets one of class
-%       sharebrain.metadata.type.Subject.
+%       nansen.module.sharebrain.type.Subject, from the NANSEN-SHAREbrain
+%       module.
 %
 %     Session table - a subject with one state gives the state's age, age
-%       category, weight and attributes to every session of that subject,
-%       in the columns of sharebrain.metadata.type.Session. A subject with
-%       several states gives none, because the Knowledge Graph does not
-%       say which state holds during which session.
+%       category, weight and attributes to every session of that
+%       subject, in the columns of nansen.module.sharebrain.type.Session.
+%       A subject with several states gives none, because the Knowledge
+%       Graph does not say which state holds during which session.
 %
 %   Subject IDs are matched exactly, never by similarity.
 %
@@ -35,8 +36,8 @@ function report = importKGSubjects(datasetVersionUUID, options)
 %   (kgpull), which takes about half a minute; links the Knowledge Graph
 %   cannot return are skipped.
 %
-%   See also sharebrain.metadata.type.Subject,
-%   sharebrain.metadata.type.Session, kgpull
+%   See also nansen.module.sharebrain.type.Subject,
+%   nansen.module.sharebrain.type.Session, kgpull
 
     arguments
         datasetVersionUUID (1,1) string {omkg.validator.mustBeValidKGIdentifier}
@@ -45,7 +46,7 @@ function report = importKGSubjects(datasetVersionUUID, options)
     end
 
     catalog = options.Project.MetaTableCatalog;
-    if ~hasMasterTable(catalog, "session")
+    if ~catalog.hasMasterMetaTable("session")
         error("SHAREbrain:ImportKGSubjects:NoSessionTable", ...
             "The project '%s' has no session table. Create the session table " + ...
             "before importing subjects from the Knowledge Graph.", options.Project.Name)
@@ -138,11 +139,11 @@ end
 function subjectTable = getSubjectTable(catalog, projectIds, project)
 %getSubjectTable - The master subject table, created or extended to hold every project subject ID
 
-    if ~hasMasterTable(catalog, "subject")
+    if ~catalog.hasMasterMetaTable("subject")
         subjectArray = createSubjects(projectIds);
         subjectTable = nansen.metadata.MetaTable.new(subjectArray);
         S = struct('MetaTableName', subjectTable.createDefaultName, ...
-            'MetaTableClass', 'sharebrain.metadata.type.Subject', ...
+            'MetaTableClass', 'nansen.module.sharebrain.type.Subject', ...
             'IsDefault', false, 'IsMaster', true);
         catalog.registerMetaTable(subjectTable, S);
         return
@@ -164,7 +165,7 @@ end
 
 function subjectArray = createSubjects(subjectIds)
 %createSubjects - Subject objects with only their SubjectID set
-    subjectArray(numel(subjectIds)) = sharebrain.metadata.type.Subject();
+    subjectArray(numel(subjectIds)) = nansen.module.sharebrain.type.Subject();
     for i = 1:numel(subjectIds)
         subjectArray(i).SubjectID = char(subjectIds(i));
     end
@@ -232,11 +233,6 @@ function report = buildReport(projectIds, matchIds, isMatched, kgIndex, kgSubjec
         report(end+1, :) = {"", kgSubjects(k).InternalIdentifier, 0, numel(kgSubjects(k).States), ...
             "No session of the project has this subject."}; %#ok<AGROW>
     end
-end
-
-function tf = hasMasterTable(catalog, typeName)
-%hasMasterTable - Whether the catalog has a master table whose class name contains typeName
-    tf = any(catalog.Table.IsMaster & contains(string(catalog.Table.MetaTableClass), typeName, 'IgnoreCase', true));
 end
 
 function [species, strain] = speciesNames(value)
