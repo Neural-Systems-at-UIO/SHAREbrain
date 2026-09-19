@@ -19,10 +19,14 @@ function docFiles = writeDatasetDocs(datasetVersionUUID, cloneFolder, options)
 %                                     instances (kgpull).
 %
 %   The section "Dataset" of README.md lists these files, the clone and
-%   its bucket, the session and subject tables, the data variables with
-%   their file adapters, and the MATLAB code that loads a variable of a
-%   session. The section is replaced each time this function runs; the
-%   rest of README.md is kept.
+%   its bucket, the session and subject tables and their CSV copies, the
+%   data variables with their file adapters and descriptions, and the
+%   MATLAB code that loads a variable of a session. The section is replaced
+%   each time this function runs; the rest of README.md is kept.
+%
+%   The project also gets AGENTS.md, the instructions for working with a
+%   project made this way, copied from
+%   sharebrain/resources/project-agents-template.md.
 %
 %   docFiles lists the files that were written.
 %
@@ -86,6 +90,11 @@ function docFiles = writeDatasetDocs(datasetVersionUUID, cloneFolder, options)
     readmeFile = fullfile(project.FolderPath, "README.md");
     writeReadmeSection(readmeFile, section)
     docFiles(end+1) = readmeFile;
+
+    sharebrainFolder = fileparts(fileparts(mfilename('fullpath')));
+    agentsFile = fullfile(project.FolderPath, "AGENTS.md");
+    copyfile(fullfile(sharebrainFolder, "resources", "project-agents-template.md"), agentsFile)
+    docFiles(end+1) = agentsFile;
 end
 
 function descriptorFile = findDataDescriptor(cloneFolder)
@@ -166,7 +175,7 @@ function section = buildReadmeSection(project, datasetVersionUUID, datasetName, 
 end
 
 function lines = describeTables(project)
-%describeTables - One line per master table: its type, class and number of rows
+%describeTables - One line per master table: its type, rows, class, CSV copy and columns
     catalog = project.MetaTableCatalog;
     lines = strings(0, 1);
     for typeName = ["session", "subject"]
@@ -174,8 +183,18 @@ function lines = describeTables(project)
             continue
         end
         metaTable = catalog.getMasterMetaTable(typeName);
-        lines(end+1, 1) = sprintf("- %s table: %d rows, class `%s`.", ...
-            upperFirst(typeName), height(metaTable.entries), metaTable.MetaTableClass); %#ok<AGROW>
+        line = sprintf("- %s table: %d rows, class `%s`.", ...
+            upperFirst(typeName), height(metaTable.entries), metaTable.MetaTableClass);
+
+        [~, fileName] = fileparts(metaTable.filepath);
+        if isfile(fullfile(fileparts(metaTable.filepath), fileName + ".csv"))
+            line = line + " CSV copy: `metadata/tables/" + fileName + ".csv`.";
+        end
+
+        columnNames = setdiff(string(metaTable.entries.Properties.VariableNames), ...
+            ["DataLocation", "Progress", "Notebook"], 'stable');
+        line = line + " Columns: " + strjoin("`" + columnNames + "`", ", ") + ".";
+        lines(end+1, 1) = line; %#ok<AGROW>
     end
     if isempty(lines)
         lines = "The project has no session or subject table.";
@@ -195,9 +214,14 @@ function lines = describeVariables(project)
     % The full name of an adapter lets a reader look up what it returns
     % with help
     adapters = nansen.dataio.listFileAdapters();
-    lines = ["| Variable | Data location | File name expression | File adapter | Loads as |"
-             "|---|---|---|---|---|"];
+    lines = ["| Variable | Description | Data location | File name expression | File adapter | Loads as |"
+             "|---|---|---|---|---|---|"];
     for variable = reshape(variables, 1, [])
+        description = "";
+        if isfield(variable, 'Description')
+            % A | would end the table cell
+            description = replace(string(variable.Description), "|", "\|");
+        end
         isAdapter = strcmp({adapters.FileAdapterName}, variable.FileAdapter);
         if strcmp(variable.FileAdapter, 'Default')
             adapterName = "Default";
@@ -210,8 +234,9 @@ function lines = describeVariables(project)
             adapterName = string(variable.FileAdapter);
             loadsAs = "";
         end
-        lines(end+1, 1) = sprintf("| `%s` | %s | `%s` | %s | %s |", variable.VariableName, ...
-            variable.DataLocation, variable.FileNameExpression, adapterName, loadsAs); %#ok<AGROW>
+        lines(end+1, 1) = sprintf("| `%s` | %s | %s | `%s` | %s | %s |", variable.VariableName, ...
+            description, variable.DataLocation, fullfile(variable.Subfolder, variable.FileNameExpression), ...
+            adapterName, loadsAs); %#ok<AGROW>
     end
 end
 
@@ -235,15 +260,21 @@ function lines = describeLoading(project)
             "% Or project.setAutoDownloadRemoteFiles(true) to download when loading";
     end
 
+    exampleSession = "<session id>";
+    if project.MetaTableCatalog.hasMasterMetaTable('session')
+        sessionTable = project.MetaTableCatalog.getMasterMetaTable('session');
+        if height(sessionTable.entries) > 0
+            exampleSession = string(sessionTable.entries.sessionID{1});
+        end
+    end
+
     lines = [
-        "Sessions get the data location and variable models from the project, as the NANSEN app passes them:"
+        "See `AGENTS.md` for how to download, load and save data. For example:"
         ""
         "```matlab"
         "nansen.ProjectManager().changeProject(""" + project.Name + """)"
         "project = nansen.getCurrentProject();"
-        "sessionTable = project.MetaTableCatalog.getMasterMetaTable(""session"");"
-        "session = sessionTable.getMetaObjects(1, ""DataLocationModel"", project.DataLocationModel, ..."
-        "    ""VariableModel"", project.VariableModel);"
+        "session = project.getSessionObjects(""" + exampleSession + """);"
         downloadLine
         "data = session.loadData(""" + exampleVariable + """);"
         "```"];
